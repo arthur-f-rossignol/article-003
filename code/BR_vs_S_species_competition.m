@@ -157,19 +157,19 @@ function biomass = compute_biomass_distribution(A1, A2, dz, l_t, l_b, l, n)
     idx_benthic     = max(idx_thermocline, min(round(l_b / dz) + 1, n + 1));
 
     % epilimnion
-    ep = 1:(idx_thermocline - 1);
-    biomass.sp1.epilimnion = sum(A1(ep)) * dz;
-    biomass.sp2.epilimnion = sum(A2(ep)) * dz;
+    epil = 1:(idx_thermocline - 1);
+    biomass.sp1.epilimnion = sum(A1(epil)) * dz;
+    biomass.sp2.epilimnion = sum(A2(epil)) * dz;
 
     % hypolimnion
-    hy = idx_thermocline:(idx_benthic - 1);
-    biomass.sp1.hypolimnion = sum(A1(hy)) * dz;
-    biomass.sp2.hypolimnion = sum(A2(hy)) * dz;
+    hypo = idx_thermocline:(idx_benthic - 1);
+    biomass.sp1.hypolimnion = sum(A1(hypo)) * dz;
+    biomass.sp2.hypolimnion = sum(A2(hypo)) * dz;
 
     % benthic layer
-    be = idx_benthic:n;
-    biomass.sp1.benthic = sum(A1(be)) * dz;
-    biomass.sp2.benthic = sum(A2(be)) * dz;
+    bent = idx_benthic:n;
+    biomass.sp1.benthic = sum(A1(bent)) * dz;
+    biomass.sp2.benthic = sum(A2(bent)) * dz;
 
     % total biomass
     biomass.sp1.total = biomass.sp1.epilimnion ...
