@@ -540,7 +540,7 @@ function dU_dt = equations(t, U, p)
     V1  = v_1 * dG1_dz ./ (abs(dG1_dz) + 1e-3);
     V1f = 0.5 * (V1(1:(n - 1)) + V1(2:n));
 
-    % upwind second-order scheme for advection term of A_BR's biomass 
+    % upwind third-order scheme for advection term of A_BR's biomass 
     ii = 3:(n - 2);
     V1f_r = V1f(ii); 
     V1f_l = V1f(ii - 1); 
@@ -576,7 +576,7 @@ function dU_dt = equations(t, U, p)
                 - V1f(n - 1) * (1 - t2) * (A1(n) + A1(n - 1)) / (2 * dz) ...
                 - V1f(n - 1) * t2 * (2 * A1(n) + 5 * A1(n - 1) - A1(n - 2)) / (6 * dz);
 
-    % upwind second-order scheme for advection term of A_S's biomass 
+    % upwind third-order scheme for advection term of A_S's biomass 
     dA2_dz(3:(n - 1)) = (2 * A2(4:n) ...
                       + 3 * A2(3:(n - 1)) ...
                       - 6 * A2(2:(n - 2)) ...
